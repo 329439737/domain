@@ -1,0 +1,41 @@
+
+$bgimg:'./../../assets/images/bgimg.jpg';
+.main{
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background-image: url($bgimg);
+  background-size: cover;
+}
+
+
+.section{
+  position: absolute;
+  padding-top: 40px;
+  padding-bottom: 20px;
+  top: 40%;
+  width: 100%;
+  left: 0px;
+  transform: translate3d(0, -50%, 0);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.antd_row{
+  display:block
+}
+
+.title_h3{
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.login_form{
+  margin: 0 auto;
+  width: 380px;
+}
+.btn{
+     width: 100%;
+     height: 44px;
+}

@@ -1,0 +1,27 @@
+$logoimg:'./../../assets/images/logo.png';
+.logo{
+  background-color: rgb(57, 61, 73);;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+
+}
+.logo_title{
+ font-weight:bold;
+ font-size: 20px;
+ color: #fff;
+ margin-left: 10px;
+}
+
+.logoimg{
+  width: 40px;
+  height: 40px;
+  background-image: url($logoimg);
+  background-size: cover;
+}
+.menuInfo{
+  padding-top: 15px;
+}
+

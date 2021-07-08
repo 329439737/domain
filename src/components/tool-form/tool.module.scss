@@ -1,0 +1,17 @@
+.searchRow {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+}
+
+.searchCol {
+  :global {
+    .ant-form-item {
+      display: flex;
+    }
+
+    .ant-form-item-control-wrapper {
+      flex: 1;
+    }
+  }
+}

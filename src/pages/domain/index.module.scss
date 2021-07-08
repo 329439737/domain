@@ -1,0 +1,22 @@
+.divmain {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.div_left {
+  Button {
+    margin-right: 10px;
+  }
+}
+
+.divrightbtn {
+  width: 49px;
+  height: 22px;
+  background: red;
+  margin-right: 5px;
+}
+
+.red {
+  background: red;
+}
