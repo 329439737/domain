@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { Card, List, Button, Input, Row, message } from 'antd'
 import Api from './../../assets/api/index'
-import Ccard from './../../components/card/index'
+import Mycontext from './../../assets/hooks/index' // 公共组件
+import Child from './../../components/card/context'// 子组件
 
 export default function Hooksss () {
+  const [context] = useState({ title: '初步认识hooks(useState, useEffect)', type: 0 })
   const [data, SetInit] = useState({ list: [] })
   const [info, InputInfo] = useState()
   const [faly, Typefaly] = useState()
@@ -31,7 +33,10 @@ export default function Hooksss () {
   return (
 
     <>
-      <Ccard title={'初步认识hooks(useState, useEffect)'}></Ccard>
+
+      <Mycontext.Provider value ={context}>
+             <Child/>
+           </Mycontext.Provider>
       <Card>
         <Row style={{ display: 'flex' }}>
             <Input placeholder='请输入...' style={{ width: '200px' }} onChange={(e) => InputInfo(e.target.value)}></Input>
