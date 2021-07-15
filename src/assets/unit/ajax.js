@@ -8,6 +8,7 @@ let instance = axios.create({
 
 // http拦截器
 instance.interceptors.request.use((config) => {
+  // console.log(config)
   // config.headers.Token = GetSeeion('token') || ''
   return config
 }, error => {

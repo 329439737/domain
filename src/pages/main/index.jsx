@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { Layout, Menu } from 'antd'
+import { Layout } from 'antd'
 import SiderInfo from './../../components/sider/index'
 import HeaderInfo from './../../components/header/index'
 import ContentInfo from './../../components/content/index'
 import PropTypes from 'prop-types'
-const { Footer, Content, Sider, Header } = Layout
-const { SubMenu } = Menu
+
+// const { Footer } = Layout
+
 export default class index extends Component {
   static propTypes = {
     history: PropTypes.object
@@ -24,7 +25,9 @@ export default class index extends Component {
 
               <ContentInfo></ContentInfo>
 
-              <Footer style={{ textAlign: 'center' }}></Footer>
+              {/* <Footer >
+
+              </Footer> */}
 
            </Layout>
 

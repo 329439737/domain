@@ -15,20 +15,11 @@ body {
   height: 80px;
 }
 
-.top_one {
+
+.top_two {
   text-align: center;
   height: 60px;
   line-height: 60px;
-  width: 100%;
-
-  .title {
-    color: #fff;
-    font-size: 30px;
-    font-weight: bold;
-  }
-}
-
-.top_two {
   float: right;
   margin-right: 100px;
 
@@ -40,9 +31,10 @@ body {
 }
 
 .mainnav {
-  width: 95%;
+  width: 90%;
   margin: 0 auto;
   margin-top: 20px;
+
 }
 
 .nav {
@@ -80,6 +72,7 @@ body {
   align-items: center;
   flex-wrap: wrap;
 }
-.back:hover{
-cursor: pointer;
+
+.back:hover {
+  cursor: pointer;
 }

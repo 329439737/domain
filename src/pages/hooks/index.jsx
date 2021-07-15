@@ -16,20 +16,31 @@ export default function Hooksss () {
   }, [faly])
 
   // 添加品牌
-  function addlist (param) {
-    console.log(param)
+  const addlist = (param) => {
+    // console.log(param)
     Api.AddList(param).then((res) => {
       message.success(res.message)
       Typefaly(info)
     })
   }
   // 删除品牌
-  function dellist (id) {
+  const dellist = (id) => {
     Api.delList(id).then((res) => {
       message.success(res.message)
       Typefaly(id)
     })
   }
+
+  // enter热键
+  const keydown = (e) => {
+    if (e.keyCode === 13) {
+      addlist({ name: info })
+      InputInfo('')
+    } else if (e.keyCode === 27) {
+      alert('你要退出？')
+    }
+  }
+
   return (
 
     <>
@@ -39,7 +50,7 @@ export default function Hooksss () {
            </Mycontext.Provider>
       <Card>
         <Row style={{ display: 'flex' }}>
-            <Input placeholder='请输入...' style={{ width: '200px' }} onChange={(e) => InputInfo(e.target.value)}></Input>
+            <Input placeholder='请输入...' style={{ width: '200px' }} onChange={(e) => InputInfo(e.target.value)} onKeyUp={(e) => { keydown(e) }} value={info}></Input>
             <Button type='primary' style={{ margin: '0 20px' }} onClick={() => addlist({ name: info })}>添加</Button>
          </Row>
       </Card>

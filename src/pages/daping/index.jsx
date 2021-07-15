@@ -13,6 +13,8 @@ export default class index extends Component {
   state={
     time: '',
     navlist: [
+
+      { id: '1' },
       { id: '1' },
       { id: '1' },
       { id: '1' },
@@ -61,12 +63,13 @@ export default class index extends Component {
       <FullScreenContainer className={style.main}>
         <BorderBox11 title={'大屏数据展示'}>
                <div className={style.top}>
-                <div className={style.top_one}><span className={style.title}></span></div>
+
                 <div className={style.top_two}><span className={style.time}>{time}</span>
-                <Decoration7 className={style.back} style={{ width: '150px', height: '30px' }}><span style={{ color: '#fff' }} onClick={() => { this.back() }}>back</span></Decoration7></div>
+                <Decoration7 className={style.back} style={{ width: '150px', height: '30px' }}><span style={{ color: '#fff' }} onClick={() => { this.back() }}>back</span></Decoration7>
+                </div>
               </div>
 
-                    <div className={style.mainnav}>
+            <div className={style.mainnav}>
 
               {
                    navlist.map((item, i) => (
@@ -81,7 +84,7 @@ export default class index extends Component {
                    ))
 
                }
-                     </div>
+              </div>
 
         <div className={style.concent}>
           <div style={{ marginRight: '20px' }}>

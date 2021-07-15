@@ -19,5 +19,9 @@ export default {
   // 图片分类导航列表
   imgList (params) {
     return Ajax.get(`${https}/getimgcategory`, { params })
+  },
+  // 图片详情列表
+  imgdetail (params) {
+    return Ajax.get(`${https}/getimageInfo/+${params}`)
   }
 }

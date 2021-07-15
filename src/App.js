@@ -5,6 +5,8 @@ import { GetSeeion } from './assets/unit/seesion'
 
 import Main from './pages/main/index' // 首页
 
+import Error from './pages/404/404' // 错误页面
+
 export default class App extends Component {
   render () {
     return (
@@ -21,6 +23,7 @@ export default class App extends Component {
 
          <Route path='/admin'
           render={props => {
+            // const token = 1
             const token = GetSeeion('token')
             return token ? <Main {...props}></Main> : <Redirect to='/'></Redirect>
           }}
@@ -28,6 +31,7 @@ export default class App extends Component {
 
           </Route>
           <Route exact path='/login' component={Login}></Route>
+          <Route exact path='/404' component={Error}></Route>
 
         </Switch>
      </Router>

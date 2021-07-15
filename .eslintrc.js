@@ -29,6 +29,7 @@ module.exports = {
   // 规则配置
   rules: {
     'no-unused-vars': 'off',
-    'prefer-const': 'off'
+    'prefer-const': 'off',
+    'prefer-const ': 0
   }
 }

@@ -16,12 +16,14 @@ export const MenuInfo = [
   {
     title: '用户管理',
     icon: <Icon type="user" />,
+    quan: false,
     key: 2,
     children: [
       {
         keyc: 20,
         titlt: '用户信息',
-        path: '/admin/userinfo'
+        path: '/admin/userinfo',
+        quan: true
       }
     ]
   },
@@ -97,7 +99,43 @@ export const MenuInfo = [
         keyc: 71,
         titlt: 'demo2',
         path: '/admin/demo2'
+      },
+      {
+        keyc: 73,
+        titlt: 'demo3',
+        path: '/admin/jsdemo3'
       }
+    ]
+  },
+  {
+    title: 'Js',
+    icon: <Icon type="play-circle" />,
+    key: 8,
+    children: [
+      {
+        keyc: 80,
+        titlt: 'demo1',
+        path: '/admin/jsdemo1'
+      },
+      {
+        keyc: 81,
+        titlt: 'demo2',
+        path: '/admin/jsdemo2'
+      }
+
+    ]
+  },
+  {
+    title: '网卡管理',
+    icon: <Icon type="play-circle" />,
+    key: 9,
+    children: [
+      {
+        keyc: 90,
+        titlt: '网卡信息',
+        path: '/admin/books'
+      }
+
     ]
   }
 ]
