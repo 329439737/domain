@@ -15,6 +15,8 @@ import Jsdemo3 from './../pages/hooks/demo3' // HOOks练习三
 import Fen from './../pages/js/demo2'// 富文本
 
 import Books from './../pages/books/index' // 书本
+
+import Account from './../pages/account/index' // 账号管理
 export default [
   {
     path: '/admin/userinfo',
@@ -85,6 +87,11 @@ export default [
     path: '/admin/books',
     name: '网卡信息',
     component: Books
+  },
+  {
+    path: '/admin/account',
+    name: '账号管理',
+    component: Account
   }
 
 ]

@@ -5,6 +5,7 @@ import { Decoration10 } from '@jiaminghi/data-view-react'
 import { kashu, threelist, onelist } from './../../assets/json/kashu'
 import Api from './../../assets/api/index'
 import moment from 'moment'
+
 const Books = () => {
   const [data, SetInit] = useState({ list: [] })
   const [columns] = useState([
@@ -123,7 +124,10 @@ const Books = () => {
               {/* 第五部分 */}
 
               <Card style={{ marginTop: '10px' }}>
-              <div className={styles.four_div1}><span className={styles.four_span1}>客户激活网卡统计</span></div>
+              <div className={styles.four_div1}><span className={styles.four_span1}>客户激活网卡统计</span>
+              <span><a>更多信息</a></span>
+              </div>
+
                       <Table rowKey='id'
                        columns={columns}
                          dataSource={data.list}

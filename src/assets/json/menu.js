@@ -137,5 +137,18 @@ export const MenuInfo = [
       }
 
     ]
+  },
+  {
+    title: '账号管理',
+    icon: <Icon type="play-circle" />,
+    key: 10,
+    children: [
+      {
+        keyc: 100,
+        titlt: '账号管理',
+        path: '/admin/account'
+      }
+
+    ]
   }
 ]

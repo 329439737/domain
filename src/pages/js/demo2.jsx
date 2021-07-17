@@ -135,6 +135,22 @@ export const demo2 = () => {
   }
 
   console.log(FunLb())
+  // 冒泡排序
+  const arr = [2, 1, 3, 4]
+
+  const btn = () => {
+    let len = arr.length
+    for (let i = 0; i < len; i++) {
+      for (let j = 0; j < len - 1 - i; j++) {
+        if (arr[j] > arr[j + 1]) {
+          let temp = arr[j]
+          arr[j] = arr[j + 1]
+          arr[j + 1] = temp
+        }
+      }
+    }
+    console.log(arr)
+  }
 
   return (
       <>
@@ -204,6 +220,13 @@ export const demo2 = () => {
                  </div>
               </Card>
 
+              <Card style={{ marginTop: '15px' }}>
+               {'冒泡排序'}
+                 <div>
+                      <Button type='primary' onClick={() => { btn() }}>冒泡排序</Button>
+                 </div>
+
+             </Card>
            </>
 
       </>
