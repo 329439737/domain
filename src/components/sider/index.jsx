@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTpes from 'prop-types'
 // import { withRouter } from 'react-router-dom'
 import { Layout, Menu, Icon } from 'antd'
+// import { CSSTransition } from 'react-transition-group'
 
 import { MenuInfo } from './../../assets/json/menu'
 import style from './index.module.scss'
@@ -48,6 +49,7 @@ class SiderLeft extends Component {
                     selectedKeys={selectedKeys}
                     openKeys={openKeys}
                     onOpenChange={this.onOpenChange}
+
                     >
                    {
                      MenuInfo.map((item, index) => (
@@ -63,7 +65,9 @@ class SiderLeft extends Component {
                      ))
                    }
                </Menu>
+
            </div>
+
       </Sider>
    )
  }

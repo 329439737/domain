@@ -1,0 +1,11 @@
+.imglist {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.imglist_img {
+  width: 100px;
+  height: 100px;
+}

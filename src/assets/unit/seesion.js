@@ -14,3 +14,24 @@ export const GetSeeion = (key) => {
 export const ClearSeeion = (key) => {
   return window.localStorage.removeItem(key)
 }
+
+// 添加表情包
+export const addgif = (gif, param) => {
+  let recordlist = JSON.parse(window.localStorage.getItem(gif))
+
+  if (recordlist) {
+    recordlist.push(param)
+    let newshuzi = JSON.stringify(recordlist)
+    return window.localStorage.setItem(gif, newshuzi)
+  } else {
+    let shuzi = []
+    shuzi.push(param)
+    let newshuzi = JSON.stringify(shuzi)
+    return window.localStorage.setItem(gif, newshuzi)
+  }
+}
+
+// 获取表情包
+export const getgif = (gif) => {
+  return JSON.parse(window.localStorage.getItem(gif))
+}

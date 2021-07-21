@@ -6,6 +6,7 @@ const Child = memo((props) => {
   const { setshowshuo } = props
 
   let object = useContext(myContextContext)
+
   return (
     <Card style={{ marginBottom: '15px' }}>
       <div style={{ display: 'flex' }}>

@@ -8,6 +8,7 @@ import Goods from './../pages/goods/index' // 货物挂办理
 
 import Addowndomain from './../pages/owndomain/addowndomain/index' // 自由域名录入
 import Dp from './../pages/daping/index' // 大屏
+import Loading from './../pages/daping/loading' // 加载
 import Hooks from './../pages/hooks/index' // hooks练习
 import HooksDemo2 from './../pages/hooks/demo' // hooks练习
 import Jsdemo1 from './../pages/js/demo-1'/// js练习1
@@ -17,6 +18,13 @@ import Fen from './../pages/js/demo2'// 富文本
 import Books from './../pages/books/index' // 书本
 
 import Account from './../pages/account/index' // 账号管理
+
+//
+import Tetest from './../pages/ts/demo1'
+
+// redux
+import Reduxdome from './../pages/reduxs/index' // redux练习
+import Reduxdome2 from './../pages/reduxs/saga' // redux练习
 export default [
   {
     path: '/admin/userinfo',
@@ -59,6 +67,11 @@ export default [
     component: Dp
   },
   {
+    path: '/admin/loading',
+    name: '加载ing',
+    component: Loading
+  },
+  {
     path: '/admin/hooks',
     name: 'Hooks练习',
     component: Hooks
@@ -92,6 +105,22 @@ export default [
     path: '/admin/account',
     name: '账号管理',
     component: Account
+  },
+  {
+    path: '/admin/ts-demo1',
+    name: 'tsdemo1',
+    component: Tetest
+  },
+
+  {
+    path: '/admin/redux-demo1',
+    name: 'redux-demo1',
+    component: Reduxdome
+  },
+  {
+    path: '/admin/saga',
+    name: 'saga',
+    component: Reduxdome2
   }
 
 ]

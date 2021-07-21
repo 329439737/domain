@@ -67,13 +67,16 @@ export default function Hooksss () {
            xxl: 3
          }}
           >
+
               {
-               data.list.map((item, i) => (
+                 data.list
+                   ? data.list.map((item, i) => (
 
                  <List.Item key={item.id}>
                     <Card title={item.name}> <Button type='primary' onClick={() => dellist(item.id)}>删除</Button></Card>
                  </List.Item>
-               ))
+                   ))
+                   : null
               }
         </List>
       </Card>

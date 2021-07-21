@@ -82,6 +82,11 @@ export const MenuInfo = [
         keyc: 60,
         titlt: '大屏管理',
         path: '/admin/dp'
+      },
+      {
+        keyc: 61,
+        titlt: 'Loading',
+        path: '/admin/loading'
       }
     ]
   },
@@ -126,6 +131,19 @@ export const MenuInfo = [
     ]
   },
   {
+    title: 'Ts',
+    icon: <Icon type="play-circle" />,
+    key: 11,
+    children: [
+      {
+        keyc: 110,
+        titlt: 'demo1',
+        path: '/admin/ts-demo1'
+      }
+
+    ]
+  },
+  {
     title: '网卡管理',
     icon: <Icon type="play-circle" />,
     key: 9,
@@ -147,6 +165,24 @@ export const MenuInfo = [
         keyc: 100,
         titlt: '账号管理',
         path: '/admin/account'
+      }
+
+    ]
+  },
+  {
+    title: 'Redux',
+    icon: <Icon type="play-circle" />,
+    key: 12,
+    children: [
+      {
+        keyc: 120,
+        titlt: 'redux-demo1',
+        path: '/admin/redux-demo1'
+      },
+      {
+        keyc: 121,
+        titlt: 'saga',
+        path: '/admin/saga'
       }
 
     ]

@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Card, Button, Input } from 'antd'
 import Ccard from './../../components/card/context' // '子组件'
 import Mycontext from './../../assets/hooks/index' // 公共组件
 import { Map } from 'core-js'
-import { concat } from 'lodash'
+import { addgif, getgif } from './../../assets/unit/seesion'
+
+import styles from './index.module.scss'
 
 export const demo2 = () => {
   const [title] =
@@ -134,7 +136,7 @@ export const demo2 = () => {
     if (l2 === null) return l1
   }
 
-  console.log(FunLb())
+  // console.log(FunLb())
   // 冒泡排序
   const arr = [2, 1, 3, 4]
 
@@ -151,8 +153,23 @@ export const demo2 = () => {
     }
     console.log(arr)
   }
+  // 关于储存
+  const [stolist, Setimglist] = useState([])
+  const onbtn = () => {
+    let key = 'gif'
+    let param =
+      { id: 12, imgurl: 'https://qq.yh31.com/tp/zjbq/202006092141317336.gif' }
+    addgif(key, (param))
+    let imglist = getgif('gif')
+    Setimglist(imglist)
+  }
 
+  useEffect(() => {
+    let imglist = getgif('gif')
+    Setimglist(imglist)
+  }, [])
   return (
+
       <>
         <Mycontext.Provider value={title}>
           <Ccard></Ccard>
@@ -224,6 +241,28 @@ export const demo2 = () => {
                {'冒泡排序'}
                  <div>
                       <Button type='primary' onClick={() => { btn() }}>冒泡排序</Button>
+                 </div>
+
+             </Card>
+
+             <Card style={{ marginTop: '15px' }}>
+               {'关于储存'}
+                 <div>
+                      <Button type='primary' onClick={() => { onbtn() }}>点击</Button>
+                 </div>
+
+                 <div className={styles.imglist}>
+
+                   {
+                     stolist.length > 0
+                       ? stolist.map((item, i) => (
+                         <div key={i}>
+
+                           <img className={styles.imglist_img} src={item.imgurl}></img>
+                         </div>
+                       ))
+                       : null
+                   }
                  </div>
 
              </Card>
