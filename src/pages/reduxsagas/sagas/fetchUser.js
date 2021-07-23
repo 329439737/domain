@@ -1,7 +1,7 @@
 // 使用数组导出函数，就不用一个一个函数导出，优化了代码！
 
 import { call, takeEvery, put } from 'redux-saga/effects'
-// import Api from './../../../assets/api/index'
+import Api from './../../../assets/api/index'
 
 import axios from 'axios'
 

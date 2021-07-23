@@ -8,11 +8,25 @@ import { Button } from 'antd'
 
 class index extends Component {
    state = {
-     titile1: { title: 'redux的初步使用' }
-
+     titile1: { title: 'redux的初步使用' },
+     array: []
    }
 
    componentDidMount () {
+     this.aa()
+   }
+
+   aa = () => {
+     const { array } = this.state
+     for (let i = 0; i < 100; i++) {
+       array[i] = i + 1
+     }
+   }
+
+   bb=() => {
+     const { array } = this.state
+     const newarray = array.reduce((x, y) => x + y)
+     console.log(newarray)
    }
 
    render () {
@@ -25,6 +39,7 @@ class index extends Component {
               <Ccard></Ccard>
           </Mycontext.Provider>
              <h1> {counter}</h1>
+          <Button onClick={() => { this.bb() }}>求和</Button>
           <Button onClick={() => this.props.increate()}>++</Button>
           <Button onClick={() => this.props.reduce()}>--</Button>
           <Button onClick={() => this.props.test({ userinfo: {} })}>点击测试</Button>

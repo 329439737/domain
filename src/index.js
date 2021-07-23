@@ -31,6 +31,9 @@ const store = createStore(
 sagaMiddleware.run(rootSaga);
 moment.locale('zh-cn')
 
+//ssr测试
+//import Router from './routers'
+
 ReactDOM.render(
  <Provider store={store}>
   <ConfigProvider locale={zhCN}>

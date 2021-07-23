@@ -1,5 +1,5 @@
 import { INCREMENT, INCREMENT_ASYNC } from '../constants/index'
-import { delay, call, put, takeEvery } from 'redux-saga/effects'
+import { delay, call, put, takeEvery, take } from 'redux-saga/effects'
 
 function * increase () {
   yield delay(1000) // 需要执行异步的时候，直接调用 call

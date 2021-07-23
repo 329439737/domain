@@ -5,9 +5,9 @@ import axios from 'axios'
 
 function * fetchuserr () {
   try {
-    const users = yield call(axios.get, 'https://jsonplaceholder.typicode.com/todos')
-    console.log('users' + users)
-    yield put({ type: 'FETCH_SUCESS', uu: users })
+    const userss = yield call(axios.get, 'https://jsonplaceholder.typicode.com/todos/1')
+    // console.log('users' + users)
+    yield put({ type: 'FETCH_SUCESSS', uu: userss })
   } catch (e) {
     yield put({ type: 'FETCH_FAIL', errors: e })
   }

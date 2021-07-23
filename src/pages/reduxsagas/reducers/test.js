@@ -12,7 +12,7 @@ const u = (state = initialState, action = {}) => {
         error: null,
         user: null
       }
-    case 'FETCH_SUCESS':
+    case 'FETCH_SUCESSS':
       return {
         isFetch: false,
         error: null,
