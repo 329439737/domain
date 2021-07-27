@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import style from './index.module.scss'
-import Info from './../../assets//json/homeinfo.json'
+import Info from './../../assets/json/homeinfo.json'
 import { Card, Icon, Button } from 'antd'
-import { find2 } from './../../mysql/index'
+// import { find2 } from './../../mysql/index'
 export default class index extends Component {
   state={
 
   }
 
   componentDidMount () {
-    console.log(find2)
+    // console.log(find2)
   }
 
   render () {
