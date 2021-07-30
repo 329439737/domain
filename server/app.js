@@ -1,18 +1,16 @@
 import routes from './router/index'
 
-import Api from './mysql/units/index'
-// const Koa = require('Koa')
+// import Db from './mysql/db/index'
+// import Unit from './mysql/units/index'
+// import bodyparser from 'koa-bodyparser'
 
-// const app = new Koa()
-// Api.testtab() // 添加数据
-// app.use(routes.routes(), routes.allowedMethods())   //路由
-const Koa = require('koa')
+const Koa = require('Koa')
 const app = new Koa()
+// Db.Insert()// 测试添加数据
+// Unit.testtab() // 测试删除表
 
-app.use(async ctx => {
-  ctx.body = 'html'
-}
-)
+// app.use(bodyparser())
+app.use(routes.routes(), routes.allowedMethods()) // 路由
 
 app.listen(9000, () => {
   console.log('node服务已经启动, 请访问localhost:9000')

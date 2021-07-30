@@ -24,4 +24,5 @@ export default {
   imgdetail (params) {
     return Ajax.get(`${https}/getimageInfo/+${params}`)
   }
+
 }

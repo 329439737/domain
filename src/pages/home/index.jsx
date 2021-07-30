@@ -18,7 +18,7 @@ export default class index extends Component {
     return (
       <div >
         <Card>
-          <Button onClick={() => { this.onbtn() }}>添加</Button>
+
         <Icon type="smile" theme="twoTone" />
         <span style={{ marginLeft: '10px' }}>{Info[i].text}</span>
         </Card>

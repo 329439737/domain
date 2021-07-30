@@ -60,7 +60,7 @@ export default class index extends Component {
               <div className={`${style.headerdiv_2}`}>
                 <Dropdown overlay={this.renderDropMenu()} placement='bottomCenter'>
                   <Button type='link'>
-                    <span>{GetSeeion('token')}</span>
+                    <span>{GetSeeion('token').username}</span>
                     <Icon type='caret-down' style={{ color: 'rgba(153, 153, 153, 0.8)' }} />
                    </Button>
                 </Dropdown>

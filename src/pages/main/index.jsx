@@ -4,6 +4,7 @@ import SiderInfo from './../../components/sider/index'
 import HeaderInfo from './../../components/header/index'
 import ContentInfo from './../../components/content/index'
 import PropTypes from 'prop-types'
+// import Tabs from './../../components/tabs/tabs'
 
 // const { Footer } = Layout
 
@@ -22,6 +23,7 @@ export default class index extends Component {
            <Layout>
 
               <HeaderInfo history={this.props.history}></HeaderInfo>
+              {/* <Tabs></Tabs> */}
 
               <ContentInfo></ContentInfo>
 

@@ -12,5 +12,5 @@ let testtab = sequelize.define('testtab', {
   },
   title: Sequelize.STRING(100) // 标题
 })
-
+console.log('testtab', testtab)
 module.exports = testtab

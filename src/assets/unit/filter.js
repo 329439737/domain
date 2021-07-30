@@ -294,6 +294,13 @@ const cusMap = [
   { id: 'INITED', name: '已完成', badcolorge: 'green' }
 ]
 
+// 当前用户在线状态
+const userstatus = [
+  {
+
+  }
+]
+
 export default {
   num,
   phone,

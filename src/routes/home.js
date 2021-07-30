@@ -103,7 +103,7 @@ export default [
   },
   {
     path: '/admin/account',
-    name: '账号管理',
+    name: '用户管理',
     component: Account
   },
   {

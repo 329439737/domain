@@ -13,6 +13,13 @@ let sequelize = new Sequelize('games', 'root', '329439737', {
   protocol: true // 开启日志
 })
 
+// 测试连接是够成功
+sequelize.authenticate().then(() => {
+  console.log('连接成功')
+}).catch(err => {
+  console.log('连接失败', err)
+})
+
 module.exports = {
   sequelize // 将此模块给暴露出去
 }

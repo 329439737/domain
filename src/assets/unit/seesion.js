@@ -1,13 +1,14 @@
 // 创建seeion
 export const SetSeeion = (key, value) => {
   if (!key) return
-  window.localStorage.setItem(key, value)
+  let newvalue = JSON.stringify(value)
+  window.localStorage.setItem(key, newvalue)
 }
 
 // 获取token
 
 export const GetSeeion = (key) => {
-  return window.localStorage.getItem(key)
+  return JSON.parse(window.localStorage.getItem(key))
 }
 
 // 清除token

@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { message } from 'antd'
 import { GetSeeion } from './seesion'
+import token from './config'
 
 let instance = axios.create({
   // baseURL: host, // 默认基础请求url
@@ -10,7 +11,8 @@ let instance = axios.create({
 // http拦截器
 instance.interceptors.request.use((config) => {
   // console.log(config)
-  // config.headers.Token = GetSeeion('token') || '' // 加头
+  config.headers.Authorization = token/// 加头
+
   return config
 }, error => {
   return Promise.reject(error)
@@ -22,15 +24,15 @@ instance.interceptors.response.use(response => {
   return Promise.resolve(response.data)
 }, error => {
   console.log(error.response)
-  // const { status } = error.response
-  // switch (status) {
-  //   case 400:
-  //     message.error('页面找不到了')
-  //     break
-  //   default:
-  //     message.error('服务器错误')
-  // }
-  return message.error('请求错误')
-  // return Promise.reject(error.response)
+  const { status } = error.response
+  switch (status) {
+    case 500:
+      message.error('服务器内部错误')
+      break
+    default:
+      message.error('服务器错误')
+  }
+  // return message.error('请求错误')
+  return Promise.reject(error.response.status)
 })
 export default instance

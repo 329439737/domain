@@ -6,13 +6,29 @@ class accountModal extends Component {
   static propTypes={
     type: PropTypes.string,
     onCancel: PropTypes.func,
-    rowinfo: PropTypes.object
+    rowinfo: PropTypes.object,
+    useradd: PropTypes.func,
+    userupdate: PropTypes.func
   }
 
   handleOk = () => {
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values)
+        let param = {}
+        if (this.props.type === 'add') {
+          param.username = values.username
+          param.password = values.password
+          param.email = values.email
+          param.mobile = values.mobile
+        } else {
+          param.id = this.props.rowinfo.id
+          param.email = values.email
+          param.mobile = values.mobile
+        }
+
+        if (this.props.type === 'add') { this.props.useradd(param) } else {
+          this.props.userupdate(param)
+        }
       }
     })
   }
@@ -36,12 +52,12 @@ class accountModal extends Component {
         >
           <Form {...formItemLayout}>
 
-           <Form.Item label='代理商'>
+           <Form.Item label='用户姓名'>
                {
-                  getFieldDecorator('receiver', {
-                    initialValue: rowinfo.name || '',
+                  getFieldDecorator('username', {
+                    initialValue: rowinfo.username || '',
                     rules: [
-                      { required: true, message: '请填写代理商名' }
+                      { required: true, message: '请填写用户姓名' }
                     ]
 
                   })(
@@ -50,68 +66,37 @@ class accountModal extends Component {
                 }
            </Form.Item>
 
-           <Form.Item label='登录账号'>
-               {
-                  getFieldDecorator('loginnum', {
-                    rules: [
-                      { required: true, message: '请填登录账号' }
-                    ]
-
-                  })(
-                    <Input autoComplete='off' />
-                  )
-                }
-           </Form.Item>
-
-           <Form.Item label='初始密码'>
+           <Form.Item label='用户密码'>
                {
                   getFieldDecorator('password', {
+                    initialValue: rowinfo.password || '666666',
                     rules: [
-                      { required: true, message: '请填初始密码' }
+                      { required: true, message: '请填用户密码' }
                     ]
 
                   })(
-                    <Input autoComplete='off' />
+                    <Input.Password autoComplete='off' />
                   )
                 }
            </Form.Item>
 
-           <Form.Item label='提现银行(选填)'>
+           <Form.Item label='邮箱'>
                {
-                  getFieldDecorator('password1', {
-
+                  getFieldDecorator('email', {
+                    initialValue: rowinfo.email || ''
                   })(
                     <Input autoComplete='off' />
                   )
                 }
            </Form.Item>
 
-           <Form.Item label='收款账号行(选填)'>
+           <Form.Item label='手机号'>
                {
-                  getFieldDecorator('password2', {
+                  getFieldDecorator('mobile', {
+                    initialValue: rowinfo.mobile || ''
 
                   })(
                     <Input autoComplete='off' />
-                  )
-                }
-           </Form.Item>
-
-           <Form.Item label='收款人(选填)'>
-               {
-                  getFieldDecorator('password3', {
-
-                  })(
-                    <Input autoComplete='off' />
-                  )
-                }
-           </Form.Item>
-
-           <Form.Item label='备注'>
-               {
-                  getFieldDecorator('password4', {
-
-                  })(
-                    <Input.TextArea autoComplete='off' />
                   )
                 }
            </Form.Item>
