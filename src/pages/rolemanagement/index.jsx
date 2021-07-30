@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Card, Table, message, Col, Row, Divider, Button } from 'antd'
 import Api from '../../assets/api/online'
 import EditModal from './editModal'
-
+import styles from './index.module.scss'
 class index extends Component {
   state={
     datalist: [],
@@ -14,6 +14,7 @@ class index extends Component {
 
   componentDidMount () {
     this.roleslist()
+    this.getinit()
   }
 
   columns = [
@@ -64,22 +65,22 @@ class index extends Component {
     })
   }
 
-  // 渲染订单详情
+  // 渲染二级详情
   renderExpandRow = (record) => {
     const rowColumns = [
       {
         title: 'id',
-        key: `expandRow-${record.id}-0`,
+        key: `expandRow-${record.children.id}-0`,
         dataIndex: 'id'
       },
       {
         title: '功能名称',
-        key: `expandRow-${record.authName}-0`,
+        key: `expandRow-${record.children.authName}-1`,
         dataIndex: 'authName'
       },
       {
         title: '路由',
-        key: `expandRow-${record.path}-0`,
+        key: `expandRow-${record.children.path}-2`,
         dataIndex: 'path'
       }
     ]
@@ -90,6 +91,41 @@ class index extends Component {
           columns={rowColumns}
           dataSource={record.children}
           pagination={false}
+          childrenColumnName='ab'
+          expandedRowRender={(record) => this.renderExpandRow1(record)}
+        />
+      </Row>
+    )
+  }
+
+  // 渲染三级级详情
+  renderExpandRow1 = (record) => {
+    const rowColumns = [
+      {
+        title: 'id',
+        key: `expandRow-${record.children.id}-0`,
+        dataIndex: 'id'
+      },
+      {
+        title: '功能名称',
+        key: `expandRow-${record.children.authName}-1`,
+        dataIndex: 'authName'
+      },
+      {
+        title: '路由',
+        key: `expandRow-${record.children.path}-2`,
+        dataIndex: 'path'
+      }
+    ]
+
+    return (
+      <Row style={{ padding: '2px 5px' }}>
+        <Table rowKey='id'
+          columns={rowColumns}
+          dataSource={record.children}
+          pagination={false}
+          childrenColumnName='abb'
+
         />
       </Row>
     )
@@ -176,10 +212,41 @@ class index extends Component {
     })
   }
 
+  // 初始化元
+  getinit=() => {
+    let x; let y
+    let lis = document.querySelectorAll('#ullist li')
+    let r = 250 /* 圆半径 */
+    let gap = 400 / lis.length /* 夹角度数 */
+    let radian = Math.PI / -280/* 弧度 */
+    for (let i = lis.length - 1; i >= 0; i--) {
+    /* 计算x,y */
+      x = r + r * (Math.cos(gap * i * radian))/* x= r+rcos0 */
+      y = r + r * (Math.sin(gap * i * radian))/* y= r+rsin0 */
+
+      lis[i].style.left = x + 'px'
+      lis[i].style.top = y + 'px'
+    };
+  }
+
   render () {
     const { datalist = [], showModal = false, type, rowdetail = {} } = this.state
 
     return (
+      <>
+
+{/* <div className={`${styles.diffuse} ${styles.diffuse_on}`} id='a'>
+    <ul className={styles.diffuse_list} id='ullist'>
+        <li className={styles.diffuse_list_li}>1</li>
+        <li className={styles.diffuse_list_li}>2</li>
+        <li className={styles.diffuse_list_li}>3</li>
+        <li className={styles.diffuse_list_li}>4</li>
+        <li className={styles.diffuse_list_li}>5</li>
+        <li className={styles.diffuse_list_li}>6</li>
+        <li className={styles.diffuse_list_li}>7</li>
+        <li className={styles.diffuse_list_li}>8</li>
+    </ul>
+</div> */}
       <Card>
 
         <Button style={{ marginBottom: '15px' }} type='primary' onClick={() => { this.btnaddsole() }}>添加角色</Button>
@@ -202,7 +269,7 @@ class index extends Component {
           : null
       }
       </Card>
-
+      </>
     )
   }
 }

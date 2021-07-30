@@ -25,6 +25,17 @@ class SiderLeft extends Component {
   // 获取列表菜单
 menulist =() => {
   menuslist.then((res) => {
+    let home = {
+      id: '00',
+      authName: '首页',
+      children: [{
+        id: '01',
+        authName: '首页',
+        path: 'home'
+      }]
+    }
+    res.unshift(home)
+
     this.setState({
       list: res
     })

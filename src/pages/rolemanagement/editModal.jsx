@@ -21,10 +21,15 @@ class editModal extends Component {
         if (type !== 'add') {
           param.id = rowdetail.id
         }
-
         this.props.btnonOK(param)
       }
     })
+  }
+
+  SetonKeyUp = e => {
+    if (e.keyCode === 13) {
+      this.handleOk()
+    }
   }
 
   render () {
@@ -53,7 +58,7 @@ class editModal extends Component {
                     ]
 
                   })(
-                    <Input autoComplete='off' />
+                    <Input autoComplete='off' onKeyUp={(e) => { this.SetonKeyUp(e) }} />
                   )
                 }
                </Form.Item>
@@ -64,7 +69,7 @@ class editModal extends Component {
                     initialValue: rowdetail.roleDesc || ''
 
                   })(
-                    <Input autoComplete='off' />
+                    <Input autoComplete='off' onKeyUp={(e) => { this.SetonKeyUp(e) }} />
                   )
                 }
                </Form.Item>
