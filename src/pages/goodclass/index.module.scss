@@ -1,0 +1,29 @@
+li {
+  list-style: none;
+}
+
+.main {
+  height: 60px;
+  width: 600px;
+  background: pink;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.div_1 {
+  background: red;
+  width: 500px;
+  height: 60px;
+  overflow: hidden;
+}
+
+.li {
+  line-height: 60px;
+  margin: 0 10px;
+  color: #fff;
+
+  font-size: 20px;
+  font-weight: bold;
+}

@@ -60,7 +60,7 @@ onCancel=() => {
     let newsesion = Object.assign({}, data, { value })
     SetSeeion('token', newsesion)
     this.onCancel()
-    this.props.history.push({ pathname: '/admin/home' })
+    this.props.history.push('/admin/home')
   }
 
   render () {

@@ -23,7 +23,6 @@ export default class App extends Component {
 
          <Route path='/admin'
           render={props => {
-            // const token = 1
             const token = GetSeeion('token')
             return token ? <Main {...props}></Main> : <Redirect to='/'></Redirect>
           }}

@@ -1,4 +1,4 @@
-import { Icon } from 'antd'
+import { Icon, message } from 'antd'
 import { object } from 'prop-types'
 
 // 电商列表
@@ -192,56 +192,33 @@ const MenuInfo =
        }
 
      ]
+   },
+   {
+     title: 'Canvas',
+     icon: <Icon type="play-circle" />,
+     key: 13,
+     children: [
+       {
+         keyc: 130,
+         titlt: 'canvas',
+         path: '/admin/canvas'
+       }
+
+     ]
    }
  ]
-const ds = [
-  {
-    title: '首页管理',
-    icon: <Icon type="home" />,
-    key: 1,
-    children: [
-      {
-        keyc: 10,
-        titlt: '首页信息',
-        path: '/admin/home'
-      }
-    ]
-  },
-  {
-    title: '用户管理',
-    icon: <Icon type="user" />,
-    key: 2,
-    children: [
-      {
-        keyc: 20,
-        titlt: '用户管理',
-        path: '/admin/account'
-      }
-
-    ]
-  },
-  {
-    title: '角色管理',
-    icon: <Icon type="user" />,
-    key: 30,
-    children: [
-      {
-        keyc: 30,
-        titlt: '角色管理',
-        path: '/admin/roles'
-      }
-
-    ]
-  }
-]
 
 const menuslist = Api.menuslist({}).then((res) => {
   if (res.meta.status === 200) {
     return res.data
+  } else {
+    let a = 1
+    message.error(`${res.meta.msg}请重新登录`)
+    return a
   }
 })
 export default {
   MenuInfo,
-  ds,
+
   menuslist
 }

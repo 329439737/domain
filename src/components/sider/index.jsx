@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTpes from 'prop-types'
 
 import { Layout, Menu, Icon } from 'antd'
-
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import choos from './../../assets/json/menu'
 import style from './index.module.scss'
 import { GetSeeion } from './../../assets/unit/seesion'
@@ -20,24 +20,17 @@ class SiderLeft extends Component {
     openKeys: [],
     list: [],
     menustype: 0
+
   };
 
   // 获取列表菜单
 menulist =() => {
   menuslist.then((res) => {
-    let home = {
-      id: '00',
-      authName: '首页',
-      children: [{
-        id: '01',
-        authName: '首页',
-        path: 'home'
-      }]
+    if (+res === 1) {
+      this.props.history.push('/login')
     }
-    res.unshift(home)
-
     this.setState({
-      list: res
+      list: res || []
     })
   })
 }
@@ -48,6 +41,10 @@ componentDidMount () {
   this.setState({
     menustype: +sisson === 1 ? 1 : 2
   })
+}
+
+componentWillUnmount () {
+  this.setState = () => false
 }
 
 // onOpenChange
@@ -115,19 +112,24 @@ componentDidMount () {
   onOpenChange={this.onOpenChange}
 >
 
-{
-                     list.map((item, index) => (
+ {
+
+        list.map((item, index) => (
                       <SubMenu key={item.id}
                       title={<span><span>{item.authName}</span></span>}
                       >
-                         {
+
+                        {
                             item.children.map((item1, index1) => (
-                            <Menu.Item key={item1.id} onClick={() => { this.getroute1(item1) }}>{item1.authName}</Menu.Item>
+
+                                        <Menu.Item key={item1.id} onClick={() => { this.getroute1(item1) }}>{item1.authName}</Menu.Item>
+
                             ))
                            }
+
                       </SubMenu>
-                     ))
-                   }
+        ))
+                          }
 
 </Menu>
 

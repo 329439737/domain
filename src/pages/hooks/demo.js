@@ -47,7 +47,7 @@ const demo2 = (props) => {
   }
   let timeid = null
   // 加一
-  timeid = () => { setInterval(() => SetTime((c) => c + 1), 1000) }
+  // (() => SetTime((c) => c + 1), 1000) }
 
   // 子组件传过来的方法
   const setshowshuo = (e) => {

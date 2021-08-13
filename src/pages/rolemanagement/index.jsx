@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
-import { Card, Table, message, Col, Row, Divider, Button } from 'antd'
+import { Card, Table, message, Col, Row, Divider, Button, Tag } from 'antd'
 import Api from '../../assets/api/online'
 import EditModal from './editModal'
+import RolessqModal from './rolessqModal'
 import styles from './index.module.scss'
 class index extends Component {
   state={
     datalist: [],
     showModal: false,
     type: '',
-    rowdetail: {}
+    rowdetail: {},
+    quxain: false
 
   }
 
@@ -46,7 +48,13 @@ class index extends Component {
       width: 44,
       align: 'center',
       render: (text, record, index) => (
-            <div><a onClick={() => this.accountedit(record) }>编辑</a> <Divider type='vertical'></Divider> <a onClick={() => this.rolesdel(record.id)}>删除</a></div>
+            <div>
+              <Button type='primary' size='small' onClick={() => this.accountedit(record) } color="magenta">编辑</Button>
+             <Divider type='vertical'></Divider>
+              <Button type='danger' size='small' onClick={() => this.rolesdel(record.id)}>删除</Button>
+              <Divider type='vertical'></Divider>
+              <Button type='dashed' size='small' onClick={() => this.getrolesmodal(record)}>角色授权</Button>
+              </div>
       )
     }
   ]
@@ -56,6 +64,14 @@ class index extends Component {
     Api.roleslist({}).then((res) => {
       const { meta, data } = res
       if (meta.status === 200) {
+        data.map((item) => (
+          item.children.map((item1) => (
+
+            item1.children.map((item2) => (
+              item2.userid = item.id
+            ))
+          ))
+        ))
         this.setState({
           datalist: data || []
         })
@@ -66,22 +82,33 @@ class index extends Component {
   }
 
   // 渲染二级详情
-  renderExpandRow = (record) => {
+  renderExpandRow = (recordd) => {
     const rowColumns = [
       {
         title: 'id',
-        key: `expandRow-${record.children.id}-0`,
+        key: `expandRow-${recordd.children.id}-0`,
         dataIndex: 'id'
       },
       {
         title: '功能名称',
-        key: `expandRow-${record.children.authName}-1`,
+        key: `expandRow-${recordd.children.authName}-1`,
         dataIndex: 'authName'
       },
       {
         title: '路由',
-        key: `expandRow-${record.children.path}-2`,
+        key: `expandRow-${recordd.children.path}-2`,
         dataIndex: 'path'
+      },
+      {
+        title: '操作',
+        key: 'bindList-4',
+        width: 44,
+        align: 'center',
+        render: (text, record, index) => (
+           <div>
+              <Button type='danger' size='small' onClick={() => this.rolesdelqn(record, recordd.id)}>删除此权限</Button>
+            </div>
+        )
       }
     ]
 
@@ -89,10 +116,10 @@ class index extends Component {
       <Row style={{ padding: '2px 5px' }}>
         <Table rowKey='id'
           columns={rowColumns}
-          dataSource={record.children}
+          dataSource={recordd.children}
           pagination={false}
           childrenColumnName='ab'
-          expandedRowRender={(record) => this.renderExpandRow1(record)}
+          expandedRowRender={(record, recordd) => this.renderExpandRow1(record, recordd)}
         />
       </Row>
     )
@@ -115,6 +142,17 @@ class index extends Component {
         title: '路由',
         key: `expandRow-${record.children.path}-2`,
         dataIndex: 'path'
+      },
+      {
+        title: '操作',
+        key: 'bindList-4',
+        width: 44,
+        align: 'center',
+        render: (text, record, index) => (
+           <div>
+              <Button type='danger' size='small' onClick={() => this.rolesdelqn(record, record.userid)}>删除此权限</Button>
+            </div>
+        )
       }
     ]
 
@@ -125,10 +163,72 @@ class index extends Component {
           dataSource={record.children}
           pagination={false}
           childrenColumnName='abb'
+          expandedRowRender={(record) => this.renderExpandRow2(record)}
 
         />
       </Row>
     )
+  }
+
+  // 渲染四级级详情
+  renderExpandRow2 = (recordd) => {
+    const rowColumns = [
+      {
+        title: 'id',
+        key: `expandRow-${recordd.children.id}-0`,
+        dataIndex: 'id'
+      },
+      {
+        title: '功能名称',
+        key: `expandRow-${recordd.children.authName}-1`,
+        dataIndex: 'authName'
+      },
+      {
+        title: '路由',
+        key: `expandRow-${recordd.children.path}-2`,
+        dataIndex: 'path'
+      },
+      {
+        title: '操作',
+        key: 'bindList-4',
+        width: 44,
+        align: 'center',
+        render: (text, record, index) => (
+           <div>
+              <Button type='danger' size='small' onClick={() => this.rolesdelqn(record, recordd.userid)}>删除此权限</Button>
+            </div>
+        )
+      }
+    ]
+
+    return (
+      <Row style={{ padding: '2px 5px' }}>
+        <Table rowKey='id'
+          columns={rowColumns}
+          dataSource={recordd.children}
+          pagination={false}
+          childrenColumnName='abb'
+
+        />
+      </Row>
+    )
+  }
+
+  // 删除角色授权
+  rolesdelqn=(record, userid) => {
+    let param = {
+      roleId: userid,
+      rightId: record.id
+    }
+    Api.getquxaindel(param).then((res) => {
+      const { meta } = res
+      if (meta.status === 200) {
+        message.success(meta.msg)
+        this.roleslist()
+      } else {
+        message.error(meta.msg)
+      }
+    })
   }
 
   // 添加确认
@@ -159,7 +259,7 @@ class index extends Component {
   rolesedit=(param) => {
     Api.rolesedit(param).then((res) => {
       const { meta } = res
-      console.log(res)
+
       if (+meta.status === 200) {
         message.success(meta.msg)
         this.roleslist()
@@ -177,7 +277,7 @@ class index extends Component {
     }
     Api.rolesdel(param).then((res) => {
       const { meta } = res
-      console.log(res)
+
       if (+meta.status === 200) {
         message.success(meta.msg)
         this.roleslist()
@@ -207,10 +307,37 @@ class index extends Component {
   onCancel =() => {
     this.setState({
       showModal: false,
+      quxain: false,
       type: '',
       rowdetail: {}
     })
   }
+
+  getrolesmodal=(record) => {
+    this.setState({
+      quxain: true,
+      rowdetail: record
+    })
+  }
+
+  btnqx=(param) => {
+    this.getroles1(param)
+  }
+
+   // 角色授权
+   getroles1=(param) => {
+     Api.getrolesq(param).then((res) => {
+       const { meta } = res
+
+       if (+meta.status === 200) {
+         message.success(meta.msg)
+         this.roleslist()
+         this.onCancel()
+       } else {
+         message.error(meta.msg)
+       }
+     })
+   }
 
   // 初始化元
   getinit=() => {
@@ -230,16 +357,16 @@ class index extends Component {
   }
 
   render () {
-    const { datalist = [], showModal = false, type, rowdetail = {} } = this.state
+    const { datalist = [], showModal = false, type, rowdetail = {}, quxain = false } = this.state
 
     return (
       <>
 
 {/* <div className={`${styles.diffuse} ${styles.diffuse_on}`} id='a'>
     <ul className={styles.diffuse_list} id='ullist'>
-        <li className={styles.diffuse_list_li}>1</li>
-        <li className={styles.diffuse_list_li}>2</li>
-        <li className={styles.diffuse_list_li}>3</li>
+        <li className={styles.diffuse_list_li}>11111111111111111111</li>
+        <li className={styles.diffuse_list_li}>2222222222222222222</li>
+        <li className={styles.diffuse_list_li}>33333333333333333333</li>
         <li className={styles.diffuse_list_li}>4</li>
         <li className={styles.diffuse_list_li}>5</li>
         <li className={styles.diffuse_list_li}>6</li>
@@ -266,6 +393,15 @@ class index extends Component {
           btnonOK={(param) => { this.btnonOK(param) }}
           rowdetail={rowdetail}
           ></EditModal>
+          : null
+      }
+      {
+        quxain
+          ? <RolessqModal
+          onCancel={() => { this.onCancel() }}
+          rowdetail={rowdetail}
+          btnqx={(param) => { this.btnqx(param) }}
+          ></RolessqModal>
           : null
       }
       </Card>

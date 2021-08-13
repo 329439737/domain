@@ -4,8 +4,6 @@ import Domain from './../pages/domain/index' // 域名信息
 import Warning from './../pages/warningbar/index' // 预警栏信息
 import Owndomain from './../pages/owndomain/index' // 自由域名管理
 
-import Goods from './../pages/goods/index' // 货物挂办理
-
 import Addowndomain from './../pages/owndomain/addowndomain/index' // 自由域名录入
 import Dp from './../pages/daping/index' // 大屏
 import Loading from './../pages/daping/loading' // 加载
@@ -25,6 +23,7 @@ import Tetest from './../pages/ts/demo1'
 // redux
 import Reduxdome from './../pages/reduxs/index' // redux练习
 import Reduxdome2 from './../pages/reduxs/saga' // redux练习
+import Canvas from './../pages/canvas/index' // cavas
 export default [
   {
     path: '/admin/userinfo',
@@ -56,11 +55,7 @@ export default [
     name: '自由域名录入',
     component: Addowndomain
   },
-  {
-    path: '/admin/goods',
-    name: '获取管理',
-    component: Goods
-  },
+
   {
     path: '/admin/dp',
     name: '大屏管理',
@@ -121,6 +116,11 @@ export default [
     path: '/admin/saga',
     name: 'saga',
     component: Reduxdome2
+  },
+  {
+    path: '/admin/canvas',
+    name: '图形处理',
+    component: Canvas
   }
 
 ]

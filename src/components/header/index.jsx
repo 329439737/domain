@@ -4,6 +4,7 @@ import style from './index.module.scss'
 import { routerMap } from './../../routes/index.js'
 import { GetSeeion, ClearSeeion } from './../../assets/unit/seesion.js'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 const { Header } = Layout
 
@@ -34,6 +35,10 @@ export default class index extends Component {
     }
   }
 
+  componentDidMount () {
+
+  }
+
   render () {
     return (
      <Header className={style.mainheader}>
@@ -43,7 +48,7 @@ export default class index extends Component {
               <Col span={20}>
                 <div className={''}>
                    <Breadcrumb style={{ lineHeight: '44px' }}>
-                    <Breadcrumb.Item>首页</Breadcrumb.Item>
+                    <Breadcrumb.Item><Link to='/admin/home'>首页</Link></Breadcrumb.Item>
                       {
                           routerMap.map((route, i) => {
                             if (route.path && location.pathname.match(route.path)) {

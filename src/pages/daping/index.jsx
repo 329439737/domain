@@ -45,11 +45,11 @@ export default class index extends Component {
 
   // 时间刷新
   gettime = () => {
-    let timeid = setInterval(() => {
-      this.setState({
-        time: moment(Date()).format('YYYY-MM-DD hh:mm:ss')
-      })
-    }, 1000)
+    // let timeid = setInterval(() => {
+    //   this.setState({
+    //     time: moment(Date()).format('YYYY-MM-DD hh:mm:ss')
+    //   })
+    // }, 1000)
   }
 
   // back
